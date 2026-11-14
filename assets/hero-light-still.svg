@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+<title id="title">Divy Dantu — Full stack developer in Canada</title>
+<desc id="desc">Building useful things for the web. A shuttlecock arcs across a badminton court. Code. Ship. Hit the court.</desc>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.name{animation:appear .8s ease-out both}.intro{animation:appear .8s .15s ease-out both}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.shuttle{animation:shuttle 7s ease-in-out infinite}@keyframes shuttle{0%,100%{transform:translate(-293px,98px) rotate(-48deg);opacity:0}8%{opacity:1}32%{transform:translate(-228px,-46px) rotate(-20deg)}60%{transform:translate(-126px,-49px) rotate(35deg)}85%{transform:translate(0,0) rotate(70deg);opacity:1}94%{opacity:0}}
+.arc{animation:flow 2s linear infinite}@keyframes flow{to{stroke-dashoffset:-22}}
+.typing{animation:type 9s steps(25,end) infinite}@keyframes type{0%,8%{width:0}45%,88%,100%{width:270px}}
+.cursor{animation:caret 9s steps(25,end) infinite,blink 1s step-end infinite}@keyframes caret{0%,8%{transform:translateX(0)}45%,88%,100%{transform:translateX(211px)}}@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.cursor{display:none}}
+*{animation:none!important}.cursor{display:none!important}</style>
+<rect width="960" height="360" rx="20" fill="#f1f7f4"/><g transform="translate(615 -4) rotate(18 155 180)"><g fill="none" stroke="#087756" stroke-width="1.5" opacity=".35">
+<path d="M40 30H270V330H40Z M40 180H270 M62 30V330 M248 30V330 M40 108H270 M40 252H270 M155 30V108 M155 252V330"/>
+<path d="M22 180H288" stroke-dasharray="2 4"/>
+</g></g><path d="M610 264Q676 44 903 166" fill="none" stroke="#087756" stroke-width="2" stroke-dasharray="3 8" opacity=".55" class="arc"/><g transform="translate(903 166)"><g class="shuttle" fill="#122e35" stroke="#f1f7f4" stroke-width="1">
+<path d="M-6 0L-24-19L-12-26L0-29L10-26L6 0Z"/>
+<path d="M-3-1L-12-25M1-1L0-28M4-1L9-25" stroke="#087756"/>
+<path d="M-6 0H6V5A6 6 0 0 1-6 5Z" fill="#087756"/>
+</g></g><circle cx="52" cy="54" r="4" fill="#087756"/><text x="67" y="59" font-size="12" fill="#4c686c" class="mono" letter-spacing="1.2">CANADA / FULL STACK DEVELOPER</text><text x="46" y="155" font-size="76" fill="#122e35" font-weight="750" letter-spacing="-2.5" class="name">Divy Dantu</text><text x="48" y="197" font-size="23" fill="#4c686c" class="intro">Building useful things for the web.</text><path d="M48 267H912" stroke="#c6dbd4"/><text x="48" y="304" font-size="15" fill="#087756" class="mono">&lt;/&gt;</text><defs><clipPath id="typing"><rect class="typing" x="0" y="0" width="270" height="40"/></clipPath></defs><g transform="translate(87 284)" clip-path="url(#typing)"><text x="0" y="20" font-size="14" fill="#122e35" class="mono">Code. Ship. Hit the court.</text></g><path class="cursor" d="M87 288v18" stroke="#087756" stroke-width="2"/>
+</svg>

@@ -1,0 +1,49 @@
+name: Refresh profile activity
+
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/profile-activity.yml'
+      - 'scripts/update_stats.py'
+      - 'scripts/prepare_snake.py'
+      - 'scripts/build_assets.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Generate contribution animations
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/contributions-light.svg?color_snake=%23087756&color_dots=%23e4ede8,%23c4e8d6,%238fd5b3,%2346ad84,%23087756
+            assets/contributions-dark.svg?palette=github-dark&color_snake=%2377e5bb&color_dots=%23192833,%23274640,%233c7960,%2359b58b,%2377e5bb
+      - name: Prepare accessible SVGs and refresh public stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/prepare_snake.py
+          python3 scripts/update_stats.py
+      - name: Save refreshed activity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/contributions-*.svg assets/stats-*.svg
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh profile activity'
+            git push
+          fi
