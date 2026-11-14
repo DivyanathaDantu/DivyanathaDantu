@@ -19,7 +19,7 @@ def api(path):
         return json.load(response)
 
 
-def main():
+def fetch_repos():
     repos = []
     page = 1
     while True:
@@ -28,6 +28,15 @@ def main():
         if len(batch) < 100:
             break
         page += 1
+    return repos
+
+
+def main():
+    try:
+        repos = fetch_repos()
+    except (OSError, ValueError) as error:  # network/HTTP errors, or a non-JSON response
+        print(f"::warning::GitHub API unavailable, keeping existing stats: {error}")
+        return
     original = [repo for repo in repos if not repo["fork"]]
     languages = Counter(repo["language"] for repo in original if repo["language"])
     top = languages.most_common(1)[0][0] if languages else "—"

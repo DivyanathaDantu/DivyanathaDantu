@@ -22,10 +22,10 @@ text{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}}
 </style>
 {content}
 </svg>\n'''
-    (ASSETS / name).write_text(document)
+    (ASSETS / name).write_text(document, encoding="utf-8")
     if "@keyframes" in css:
         still = document.replace('</style>', '*{animation:none!important}.cursor{display:none!important}</style>')
-        (ASSETS / name.replace('.svg', '-still.svg')).write_text(still)
+        (ASSETS / name.replace('.svg', '-still.svg')).write_text(still, encoding="utf-8")
 
 
 def text(x, y, value, size, fill, extra=""):
